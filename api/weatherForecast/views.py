@@ -12,7 +12,7 @@ def weather_detail(request):
     if request.method == 'GET':
         date = request.GET.get('date','')
         country_code = request.GET.get('country_code','')
-        if date == "" or re.match('^[0-9]{4}-[0-9]{2}-[0-9]{2}$', date) or country_code not in ['CZ','SK','UK']:
+        if date == "" or re.match('^[0-9]{4}-[0-9]{2}-[0-9]{2}$', date) == None or country_code not in ['CZ','SK','UK']:
             return JsonResponse({"error": "wrong input data - need country_code={XX} - possible values CZ, SK or UK and date{YYYY-MM-DD}"}, status=400)    
         
         try:
