@@ -1,15 +1,12 @@
 from rest_framework import serializers
 from weatherForecast.models import Weather
-import logging
-import json
 
-class WeatherSerializer(serializers.ModelSerializer): 
+class WeatherSerializer(serializers.Serializer): 
 
     class Meta:
         model = Weather
         db_table = 'weather'
-        fields = ['id', 'created']
-    
-    def save(self):
+        fields = ['date', 'countryCode', 'created', 'temperature']
 
-        return True
+
+#tady to budu načítat z api
