@@ -10,7 +10,7 @@ class Command(BaseCommand):
         parser.add_argument('country_code', nargs='+')
 
     def handle(self):
-        temperature = WeatherApi.getTemperature()
+        temperature = WeatherApi.get_temperature()
         if temperature == False:
             self.stdout.write(self.style.ERROR('Something went wrong check logs'))
 
