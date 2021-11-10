@@ -1,39 +1,25 @@
-from django.http import HttpResponse, JsonResponse
+import logging
+from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from weatherForecast.models import Weather
-from weatherForecast.serializers import WeatherSerializer
 from weatherForecast.services import WeatherApi
 import re
-import logging
 
-# Create your views here.
+logger = logging.getLogger("djangologer")
+
 @csrf_exempt
 def weather_detail(request):
     if request.method == 'GET':
-        date = request.GET.get('date','')
-        country_code = request.GET.get('country_code','')
-        if date == "" or re.match('^[0-9]{4}-[0-9]{2}-[0-9]{2}$', date) == None or country_code not in ['CZ','SK','UK']:
-            return JsonResponse({"error": "wrong input data - need country_code={XX} - possible values CZ, SK or UK and date{YYYY-MM-DD}"}, status=400)    
-        
-        try:
-            temperature = float(Weather.objects.get(countryCode=country_code, date=date).temperature)
-        except Weather.DoesNotExist:
-            temperature = WeatherApi.apiCall(countryCode=country_code, date=date)
-            
-            if type(temperature) == int or float:
-                data = {"countryCode": country_code, "date": date, "temperature" : temperature}
-                serializer = WeatherSerializer(data=data)
-                if serializer.is_valid():
-                    serializer.save()
-                else:
-                    return JsonResponse({"error": "saving data error"}, status=400)
-            else:
-                return JsonResponse({"error": "api call error"}, status=400)
+        date = request.GET.get('date', '')
+        country_code = request.GET.get('country_code', '')
+        if date == "" or re.match('^[0-9]{4}-[0-9]{2}-[0-9]{2}$', date) is None or country_code not in ['CZ','SK','UK']:
+            logger.warning("wrong input data format")
+            return JsonResponse(
+                {"error": "wrong input data - need country_code={XX} - possible values CZ, SK or UK and date{YYYY-MM-DD}"}, status=400)
 
-        if temperature > 20:
-            return JsonResponse({"forecast": "good"}, status=200)
-        elif temperature < 20 and temperature > 10:
-            return JsonResponse({"forecast": "soso"}, status=200)
-        else:
-            return JsonResponse({"forecast": "bad"}, status=200)
+        temperature = WeatherApi.getTemperature(country_code=country_code, date=date)
+
+        if temperature == False:
+            return JsonResponse({"error": "Something went wrong check warning.log for more details"}, status=500)
+        
+        return JsonResponse({"weather": temperature}, status=200)
         
