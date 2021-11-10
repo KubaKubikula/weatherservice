@@ -2,12 +2,12 @@ import logging
 import requests
 from weatherForecast.models import Weather
 from weatherForecast.serializers import WeatherSerializer
+from django.conf import settings
 
 logger = logging.getLogger('djangologer')
 
 class WeatherApi:
-    API_KEY = ''
-    
+
     def api_call(country_code, date):
         if country_code == 'CZ':
             city = 'Prague'
@@ -17,8 +17,9 @@ class WeatherApi:
             city = 'London'
         
         response = requests.get(
-            'http://api.weatherapi.com/v1/history.json?key=' +
-            WeatherApi.API_KEY +
+            settings.WEATHER_API_URL +
+            '?key=' +
+            settings.WEATHER_API_KEY +
             '&q=' +
             city +
             '&date=' +
