@@ -41,13 +41,14 @@ class WeatherApi:
             temperature = WeatherApi.api_call(
                 country_code=country_code, date=date)
 
-            if temperature is int or float:
+            if (temperature is int or float) and (temperature is not False):
                 data = {
                     'country_code': country_code,
                     'date': date,
                     'temperature': temperature
                 }
                 serializer = WeatherSerializer(data=data)
+
                 if serializer.is_valid():
                     serializer.save()
                 else:
@@ -55,7 +56,8 @@ class WeatherApi:
             else:
                 return False
         else:
-            temperature = float(WeatherItem.temperature)
+            temperature = WeatherItem.temperature
+            logger.warning(temperature)
 
         if(temperature > 20):
             return 'good'
