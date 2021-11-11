@@ -8,14 +8,14 @@ import re
 
 def valid_country(country_code):
         if country_code not in settings.WEATHER_API_ALLOWED_COUNTRIES:
-            msg = "not a valid country"
+            msg = 'not a valid country'
             raise argparse.ArgumentTypeError(msg)
         else:
             return country_code
 
 def valid_dateformat(date):
         if re.match('^[0-9]{4}-[0-9]{2}-[0-9]{2}$', date) is None:
-            msg = "date format has to be {YYYY-MM-DD}"
+            msg = 'date format has to be {YYYY-MM-DD}'
             raise argparse.ArgumentTypeError(msg)
         else:
             return date
