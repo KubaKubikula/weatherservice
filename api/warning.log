@@ -28,3 +28,6 @@
 2021-11-11 14:49:16,492 WARNING False
 2021-11-11 14:49:52,498 WARNING 6.4
 2021-11-11 14:51:05,234 WARNING 6.4
+2021-11-11 14:53:35,439 WARNING wrong input data format
+2021-11-11 14:53:40,555 WARNING {'error': {'code': 2006, 'message': 'API key is invalid.'}}
+2021-11-11 17:04:41,376 WARNING {'error': {'code': 1008, 'message': 'API key is limited to get history data. Please check our pricing page and upgrade to higher plan.'}}
