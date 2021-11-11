@@ -40,7 +40,7 @@ class WeatherApi:
                     date=date).temperature)
         except Weather.DoesNotExist:
             temperature = WeatherApi.api_call(
-                countryCode=country_code, date=date)
+                country_code=country_code, date=date)
 
             if temperature is int or float:
                 data = {

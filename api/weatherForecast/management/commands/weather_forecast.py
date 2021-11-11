@@ -9,8 +9,11 @@ class Command(BaseCommand):
         parser.add_argument('date', nargs='+')
         parser.add_argument('country_code', nargs='+')
 
-    def handle(self):
-        temperature = WeatherApi.get_temperature()
+    def handle(self, *args, **options):
+        date = options['date'][0]
+        country_code = options['country_code'][0]
+        temperature = WeatherApi.get_temperature(country_code, date)
+
         if temperature == False:
             self.stdout.write(self.style.ERROR('Something went wrong check logs'))
 

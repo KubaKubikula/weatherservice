@@ -1,0 +1,4 @@
+2021-11-10 09:36:11,435 WARNING wrong input data format
+2021-11-11 08:36:15,182 WARNING {'error': {'code': 2006, 'message': 'API key is invalid.'}}
+2021-11-11 08:38:12,336 WARNING {'error': {'message': 'API key is invalid.', 'code': 2006}}
+2021-11-11 08:38:49,716 WARNING {'error': {'code': 2006, 'message': 'API key is invalid.'}}

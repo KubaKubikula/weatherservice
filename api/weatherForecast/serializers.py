@@ -7,4 +7,4 @@ class WeatherSerializer(serializers.ModelSerializer):
     class Meta:
         model = Weather
         db_table = 'weather'
-        fields = ['date', 'countryCode', 'created', 'temperature']
+        fields = ['date', 'country_code', 'created', 'temperature']
