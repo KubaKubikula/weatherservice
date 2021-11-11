@@ -2,7 +2,6 @@
 from django.core.management.base import BaseCommand
 from weatherForecast.services import WeatherApi
 from django.conf import settings
-import re
 from datetime import datetime
 import argparse
 

@@ -15,7 +15,7 @@ def weather_detail(request):
         if date == "" or re.match('^[0-9]{4}-[0-9]{2}-[0-9]{2}$', date) is None or country_code not in settings.WEATHER_API_ALLOWED_COUNTRIES:
             logger.warning("wrong input data format")
             return JsonResponse(
-                {'error': 'wrong input data - need country_code={XX} - possible values CZ, SK or UK and date{YYYY-MM-DD}'}, status=400)
+                {'error': 'wrong input data - need country_code={XX} - possible values ' + str(settings.WEATHER_API_ALLOWED_COUNTRIES) + ' and date{YYYY-MM-DD}'}, status=400)
 
         temperature = WeatherApi.get_temperature(country_code=country_code, date=date)
 
