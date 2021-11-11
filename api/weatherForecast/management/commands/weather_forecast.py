@@ -42,4 +42,4 @@ class Command(BaseCommand):
         if temperature == False:
             self.stdout.write(self.style.ERROR('Something went wrong check logs'))
 
-        self.stdout.write(self.style.SUCCESS('weather: "%s"' % temperature))
+        self.stdout.write(self.style.SUCCESS('{"forecast": "%s"}' % temperature))
