@@ -156,4 +156,6 @@ LOGGING = {
 
 WEATHER_API_KEY = 'nejakyklic'
 
+WEATHER_API_ALLOWED_COUNTRIES = ['CZ','SK','UK']
+
 WEATHER_API_URL = 'http://api.weatherapi.com/v1/history.json'
