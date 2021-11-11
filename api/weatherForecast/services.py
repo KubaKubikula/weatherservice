@@ -59,7 +59,7 @@ class WeatherApi:
 
         if(temperature > 20):
             return 'good'
-        if(temperature < 20 and temperature > 10):
+        if(temperature <= 20 and temperature >= 10):
             return 'soso'
         else:
             return 'bad'
