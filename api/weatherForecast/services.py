@@ -57,7 +57,6 @@ class WeatherApi:
                 return False
         else:
             temperature = WeatherItem.temperature
-            logger.warning(temperature)
 
         if(temperature > 20):
             return 'good'
