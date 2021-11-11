@@ -4,6 +4,7 @@ from weatherForecast.services import WeatherApi
 from django.conf import settings
 from datetime import datetime
 import argparse
+import re
 
 def valid_country(country_code):
         if country_code not in settings.WEATHER_API_ALLOWED_COUNTRIES:
@@ -12,20 +13,25 @@ def valid_country(country_code):
         else:
             return country_code
 
+def valid_dateformat(date):
+        if re.match('^[0-9]{4}-[0-9]{2}-[0-9]{2}$', date) is None:
+            msg = "date format has to be {YYYY-MM-DD}"
+            raise argparse.ArgumentTypeError(msg)
+        else:
+            return date
+
 class Command(BaseCommand):
-    help = 'Get weather conditions'
 
     def add_arguments(self, parser):
         parser.add_argument(
             'date',
             nargs='+',
-            type=lambda d: datetime.strptime(d, '%Y-%m-%d').strftime('%Y-%m-%d'),
+            type=valid_dateformat,
         )
         parser.add_argument(
             'country_code',
             nargs='+',
             type=valid_country,
-            help=str(settings.WEATHER_API_ALLOWED_COUNTRIES),
         )
     
     def handle(self, **options):
