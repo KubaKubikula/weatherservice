@@ -33,12 +33,11 @@ class WeatherApi:
         return json['forecast']['forecastday'][0]['day']['avgtemp_c']
 
     def get_temperature(country_code, date):
-        try:
-            temperature = float(
-                Weather.objects.get(
-                    country_code=country_code,
-                    date=date).temperature)
-        except Weather.DoesNotExist:
+        
+        WeatherItem = Weather.objects.filter(country_code=country_code,date=date).first()
+        #logger.warning(str(WeatherItem))
+
+        if WeatherItem == None:
             temperature = WeatherApi.api_call(
                 country_code=country_code, date=date)
 
@@ -55,6 +54,8 @@ class WeatherApi:
                     return False
             else:
                 return False
+        else:
+            temperature = float(WeatherItem.temperature)
 
         if(temperature > 20):
             return 'good'

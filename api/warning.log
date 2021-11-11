@@ -6,3 +6,13 @@
 2021-11-11 08:45:05,274 WARNING {'error': {'message': 'API key is invalid.', 'code': 2006}}
 2021-11-11 08:45:28,972 WARNING {'error': {'code': 1008, 'message': 'API key is limited to get history data. Please check our pricing page and upgrade to higher plan.'}}
 2021-11-11 08:45:34,236 WARNING {'error': {'code': 1008, 'message': 'API key is limited to get history data. Please check our pricing page and upgrade to higher plan.'}}
+2021-11-11 09:42:39,075 WARNING {'error': {'message': 'API key is invalid.', 'code': 2006}}
+2021-11-11 09:59:11,301 WARNING 2021-11-10
+2021-11-11 10:02:05,499 WARNING Weather object (1)
+2021-11-11 10:02:14,802 WARNING Weather object (1)
+2021-11-11 10:11:22,907 WARNING None
+2021-11-11 10:11:47,598 WARNING None
+2021-11-11 10:14:07,827 WARNING None
+2021-11-11 10:14:19,941 WARNING Weather object (14)
+2021-11-11 10:14:31,457 WARNING None
+2021-11-11 10:15:20,317 WARNING Weather object (15)
