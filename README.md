@@ -1,4 +1,4 @@
-# weatherservice
+# Weatherservice
 
 
 Videotutorial HERE https://www.youtube.com/watch?v=8SBBsSPaREg
