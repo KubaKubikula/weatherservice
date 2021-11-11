@@ -1,7 +1,12 @@
 # weatherservice
 
-https://www.notion.so/Backend-developer-testing-task-5c3c5ed653de4e8caea8ef4e0b29c6c7
+Instalation
+--------------
 
-- dodelat nějaké logy
-- testy 
-- command
+git clone git@github.com:KubaKubikula/weatherservice.git
+
+cd weatherservice
+
+docker-compose up
+
+setup /api/settings.py WEATHER_API_KEY (here you have to put api key from your https://www.weatherapi.com/my/)
